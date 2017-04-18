@@ -1,0 +1,34 @@
+<resources>
+
+    <string name="page1"><![CDATA[The <font color="gray"><b><i>Indicators</i></b></font> library supports different indicator types out of the box.]]></string>
+    <string name="page2"><![CDATA[The <font color="gray"><b><i>PageIndicatorView</i></b></font> displays selected and unselected drawables for all pages.]]></string>
+    <string name="page3"><![CDATA[The <font color="gray"><b><i>PageNumberView</i></b></font> displays the current page and the page count as text.]]></string>
+    <string name="page4"><![CDATA[All the indicators can be added to the <font color="gray"><b><i>PageIndicators</i></b></font> layout directly.]]></string>
+    <string name="page5"><![CDATA[Or just be registered manually as a observers with the <font color="gray"><b><i>PageIndicators</i></b></font> layout.]]></string>
+    <string name="page6"><![CDATA[Also the page scroll position can be observed with a <font color="gray"><b><i>PageScrollObserver</i></b></font>.]]></string>
+    <string name="page7"><![CDATA[Find the <font color="gray"><b><i>Indicators</i></b></font> library on <b>GitHub</b><p><a href="https://github.com/volders/Indicators><img src="github.png"> volders/Indicators</a>"]]></string>
+
+    <integer-array name="drawablePages">
+        <item>1</item>
+        <item>2</item>
+        <item>4</item>
+        <item>7</item>
+    </integer-array>
+
+    <integer-array name="externalPages">
+        <item>5</item>
+        <item>7</item>
+    </integer-array>
+
+    <integer-array name="flippingPages">
+        <item>6</item>
+        <item>7</item>
+    </integer-array>
+
+    <integer-array name="numberPages">
+        <item>3</item>
+        <item>4</item>
+        <item>7</item>
+    </integer-array>
+
+</resources>

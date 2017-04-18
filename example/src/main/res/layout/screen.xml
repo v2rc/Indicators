@@ -1,0 +1,101 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.util.Log" />
+
+        <import type="berlin.volders.indicators.example.Marks" />
+
+        <variable
+            name="adapter"
+            type="android.support.v4.view.PagerAdapter" />
+
+        <variable
+            name="data"
+            type="berlin.volders.indicators.example.Data" />
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="berlin.volders.indicators-example.MainActivity">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+            <berlin.volders.indicators.example.Animator
+                android:id="@+id/animator"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_gravity="bottom" />
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:adapter="@{adapter}"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+        <berlin.volders.indicators.PageIndicatorView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            android:padding="@dimen/indicator_margin"
+            app:indicator="@{Marks.create(context)}"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:page="@{data.page}"
+            app:pageIndicators="@{pageIndicators}"
+            app:pages="@{@intArray/externalPages}" />
+
+        <berlin.volders.indicators.PageIndicators
+            android:id="@+id/page_indicators"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:padding="@dimen/indicator_margin"
+            app:indicatorsObserver="@{animator}"
+            app:page="@={data.page}"
+            app:pageCountObserver="@{(i, count) -> Log.d(`Indicators`, `count=` + count)}"
+            app:pageObserver="@{(i, page) -> Log.d(`Indicators`, `page=` + page)}"
+            app:pageScrollObserver="@{(i, page, offset) -> Log.d(`Indicators`, `page=` + page + `;offset` + offset)}"
+            app:pageStateObserver="@{(i, state) -> Log.d(`Indicators`, `state=` + state)}"
+            app:viewPager="@{viewPager}">
+
+            <berlin.volders.indicators.example.Flipper
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:layout_gravity="bottom"
+                app:page="@{data.page}"
+                app:pages="@{@intArray/flippingPages}" />
+
+            <berlin.volders.indicators.PageIndicatorView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                app:indicator="@drawable/indicator"
+                app:indicatorSpacing="@dimen/indicator_spacing"
+                app:page="@{data.page}"
+                app:pages="@{@intArray/drawablePages}" />
+
+            <berlin.volders.indicators.PageNumberView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:textAppearance="?android:textAppearanceMedium"
+                app:page="@{data.page}"
+                app:pages="@{@intArray/numberPages}" />
+        </berlin.volders.indicators.PageIndicators>
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

@@ -1,0 +1,7 @@
+<resources>
+    <dimen name="indicator_margin">16dp</dimen>
+    <dimen name="indicator_mark_size">24sp</dimen>
+    <dimen name="indicator_radius">4dp</dimen>
+    <dimen name="indicator_size">12dp</dimen>
+    <dimen name="indicator_spacing">8dp</dimen>
+</resources>

@@ -9,6 +9,8 @@ indicator types without a big effort.
 
 This library works well together with the [Android Data Binding Library] and [Binding Supplies].
 
+![Example](assets/example.gif)
+
 
 Usage
 -----

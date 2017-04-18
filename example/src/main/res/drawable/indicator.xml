@@ -1,0 +1,16 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_selected="true">
+        <shape android:shape="oval">
+            <solid android:color="@color/colorPrimary" />
+            <size android:width="@dimen/indicator_size" android:height="@dimen/indicator_size" />
+        </shape>
+    </item>
+
+    <item>
+        <shape android:shape="oval">
+            <stroke android:width="2dp" android:color="@color/colorPrimary" />
+            <size android:width="@dimen/indicator_size" android:height="@dimen/indicator_size" />
+        </shape>
+    </item>
+</selector>

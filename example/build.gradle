@@ -1,0 +1,41 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion xTargetSdkVersion
+    buildToolsVersion xBuildToolsVersion
+
+    defaultConfig {
+        versionCode 1
+        minSdkVersion 11
+        targetSdkVersion xTargetSdkVersion
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    dataBinding {
+        enabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
+        }
+    }
+}
+
+configurations {
+    all {
+        resolutionStrategy {
+            force "com.android.support:support-annotations:$androidSupportVersion"
+        }
+    }
+}
+
+dependencies {
+    compile "com.android.support:appcompat-v7:$androidSupportVersion"
+    compile "com.android.support:design:$androidSupportVersion"
+    compile project(':library')
+    testCompile 'junit:junit:4.12'
+    androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
+}
