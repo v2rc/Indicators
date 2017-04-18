@@ -1,0 +1,26 @@
+<resources>
+
+    <declare-styleable name="PageIndicatorView">
+
+        <attr name="android:fillViewport" />
+
+        <attr name="indicator" format="reference|color" />
+
+        <attr name="indicatorSpacing" format="dimension" />
+
+        <attr name="indicatorWidth" format="dimension">
+            <enum name="intrinsic" value="-1" />
+        </attr>
+
+        <attr name="indicatorHeight" format="dimension">
+            <enum name="intrinsic" value="-1" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="PageNumberView">
+
+        <attr name="indicatorFormatLocalized" format="boolean" />
+
+        <attr name="indicatorTemplate" format="string" />
+    </declare-styleable>
+</resources>
