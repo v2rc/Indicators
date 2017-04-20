@@ -23,18 +23,25 @@ android {
     }
 }
 
-configurations.all {
-    resolutionStrategy {
-        force "com.android.support:support-v4:$androidSupportVersion"
+configurations {
+    exported
+    compile.extendsFrom exported
+    all {
+        resolutionStrategy {
+            force "com.android.support:support-v4:$androidSupportVersion"
+        }
     }
 }
+
+conf2ScopeMappings.addMapping 100, configurations.exported, 'compile'
+conf2ScopeMappings.addMapping 200, configurations.compile, 'provided'
 
 configurations.default {
     exclude group: 'com.android.databinding'
 }
 
 dependencies {
-    compile "com.android.support:support-core-ui:$androidSupportVersion"
+    exported "com.android.support:support-core-ui:$androidSupportVersion"
     provided "com.android.support:support-annotations:$androidSupportVersion"
     testCompile 'junit:junit:4.12'
     testCompile 'org.hamcrest:hamcrest-library:1.3'
