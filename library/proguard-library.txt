@@ -1,0 +1,2 @@
+# PageIndicatorsBindingAdapters are optional and to be used by databinding
+-dontwarn berlin.volders.indicators.PageIndicatorsBindingAdapters*
