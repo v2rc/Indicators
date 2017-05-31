@@ -22,6 +22,7 @@ import android.databinding.InverseBindingListener;
 import android.databinding.adapters.ListenerUtil;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 
 public class PageIndicatorsBindingAdapters {
 
@@ -100,28 +101,17 @@ public class PageIndicatorsBindingAdapters {
     }
 
     @BindingAdapter("pageIndicators")
-    public static void bindPageIndicators(@NonNull PageIndicatorView view,
+    public static void bindPageIndicators(@NonNull View view,
                                           PageIndicators oldIndicators,
                                           PageIndicators newIndicators) {
-        bindPageIndicators((PageIndicators.Observer) view, oldIndicators, newIndicators);
-    }
-
-    @BindingAdapter("pageIndicators")
-    public static void bindPageIndicators(@NonNull PageNumberView view,
-                                          PageIndicators oldIndicators,
-                                          PageIndicators newIndicators) {
-        bindPageIndicators((PageIndicators.Observer) view, oldIndicators, newIndicators);
-    }
-
-    @BindingAdapter("pageIndicators")
-    public static void bindPageIndicators(@NonNull PageIndicators.Observer observer,
-                                          PageIndicators oldIndicators,
-                                          PageIndicators newIndicators) {
-        if (oldIndicators != null) {
-            oldIndicators.unregisterObserver(observer);
-        }
-        if (newIndicators != null) {
-            newIndicators.registerObserver(observer);
+        if (view instanceof PageIndicators.Observer) {
+            PageIndicators.Observer observer = (PageIndicators.Observer) view;
+            if (oldIndicators != null) {
+                oldIndicators.unregisterObserver(observer);
+            }
+            if (newIndicators != null) {
+                newIndicators.registerObserver(observer);
+            }
         }
     }
 }
