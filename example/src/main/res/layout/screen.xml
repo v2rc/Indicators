@@ -46,7 +46,21 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:adapter="@{adapter}"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <berlin.volders.indicators.PageIndicators
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:padding="@dimen/indicator_margin">
+
+                <berlin.volders.indicators.example.Flipper
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp"
+                    app:page="@{data.page}"
+                    app:pages="@{@intArray/flippingPages}" />
+            </berlin.volders.indicators.PageIndicators>
+        </android.support.v4.view.ViewPager>
 
         <berlin.volders.indicators.PageIndicatorView
             android:layout_width="match_parent"
@@ -72,13 +86,6 @@
             app:pageScrollObserver="@{(i, page, offset) -> Log.d(`Indicators`, `page=` + page + `;offset` + offset)}"
             app:pageStateObserver="@{(i, state) -> Log.d(`Indicators`, `state=` + state)}"
             app:viewPager="@{viewPager}">
-
-            <berlin.volders.indicators.example.Flipper
-                android:layout_width="match_parent"
-                android:layout_height="24dp"
-                android:layout_gravity="bottom"
-                app:page="@{data.page}"
-                app:pages="@{@intArray/flippingPages}" />
 
             <berlin.volders.indicators.PageIndicatorView
                 android:layout_width="wrap_content"

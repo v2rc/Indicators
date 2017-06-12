@@ -30,6 +30,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewParent;
 import android.widget.FrameLayout;
 
 import java.lang.annotation.Documented;
@@ -47,6 +48,7 @@ import static java.lang.annotation.RetentionPolicy.SOURCE;
  * The Indicators framework base UI element. It handles all connections to the {@link ViewPager} and
  * notifies all observers of changes to the data, so that all indicators display the right values.
  */
+@ViewPager.DecorView
 public class PageIndicators extends FrameLayout {
 
     private final ViewPager.OnAdapterChangeListener adapterChangeListener
@@ -58,6 +60,7 @@ public class PageIndicators extends FrameLayout {
     final Observers observers = new Observers();
 
     private ViewPager viewPager;
+    private boolean addedAsDecor;
 
     public PageIndicators(Context context) {
         super(context);
@@ -74,6 +77,28 @@ public class PageIndicators extends FrameLayout {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public PageIndicators(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
+    }
+
+    @Override
+    @CallSuper
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        if (viewPager == null) {
+            ViewParent parent = getParent();
+            if (parent instanceof ViewPager) {
+                setViewPager((ViewPager) parent);
+                addedAsDecor = true;
+            }
+        }
+    }
+
+    @Override
+    @CallSuper
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        if (addedAsDecor) {
+            setViewPager(null);
+        }
     }
 
     @Override
@@ -97,6 +122,7 @@ public class PageIndicators extends FrameLayout {
      */
     @CallSuper
     public void setViewPager(@Nullable ViewPager viewPager) {
+        addedAsDecor = false;
         if (this.viewPager != viewPager) {
             if (this.viewPager != null) {
                 unbindViewPager(this.viewPager);

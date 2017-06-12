@@ -32,9 +32,10 @@ All views of *Indicators* are fully supported in any layout.
 
 ### *\<PageIndicators /\>*
 
-`PageIndicators` is the parent layout to bind to any `ViewPager`. It integrates
-well with the [Android Data Binding Library] and provides everything needed to
-create indicators easily.
+`PageIndicators` is the parent layout to bind to any `ViewPager`. It defines a
+`@ViewPager.DecorView` to be added to a `ViewPager` parent directly in XML and
+integrates well with the [Android Data Binding Library] providing everything
+needed to create indicators easily.
 
 ##### Bindings
  * `app:page`
