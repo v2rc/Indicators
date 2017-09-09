@@ -17,9 +17,10 @@ allprojects {
 }
 
 ext {
-    androidSupportVersion = '25.4.0'
-    xBuildToolsVersion = '25.0.2'
-    xTargetSdkVersion = 25
+    androidSupportVersion = '26.0.2'
+    xBuildToolsVersion = '26.0.1'
+    xTargetSdkVersion = 26
+    xMinSdkVersion = 15
 }
 
 task clean(type: Delete) {
@@ -27,5 +28,5 @@ task clean(type: Delete) {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '3.5'
+    gradleVersion = '3.5.1'
 }

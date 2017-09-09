@@ -2,6 +2,7 @@
 ===================================
 [![Build][1]][2]
 [![Release][3]][4]
+[![Versions][7]][8]
 
 *Indicators* is a micro framework for creating `ViewPager` indicators. Instead
 of limited indicator implementations, it provides the means to create new
@@ -96,7 +97,7 @@ Installation
 Add [JitPack][4] to your repositories and *Indicators* to your dependencies
 
     dependencies {
-        compile "berlin.volders:indicators:$indicatorsVersion"
+        compile "com.github.v2rc:indicators:$indicatorsVersion"
     }
 
 
@@ -119,8 +120,10 @@ License
 
 
   [Android Data Binding Library]: https://developer.android.com/topic/libraries/data-binding/index.html
-  [Binding Supplies]: https://github.com/volders/Supplies/tree/master/binding
-  [1]: https://travis-ci.org/volders/Indicators.svg?branch=master
-  [2]: https://travis-ci.org/volders/Indicators
-  [3]: https://jitpack.io/v/berlin.volders/indicators.svg
-  [4]: https://jitpack.io/#berlin.volders/indicators
+  [Binding Supplies]: https://github.com/v2rc/Supplies/tree/master/binding
+  [1]: https://travis-ci.org/v2rc/Indicators.svg?branch=master
+  [2]: https://travis-ci.org/v2rc/Indicators
+  [3]: https://jitpack.io/v/v2rc/indicators.svg
+  [4]: https://jitpack.io/#v2rc/indicators
+  [7]: https://asapi.herokuapp.com/com.github.v2rc/indicators@svg
+  [8]: https://asapi.herokuapp.com/com.github.v2rc/indicators

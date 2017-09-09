@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         versionCode 2
-        minSdkVersion 11
+        minSdkVersion xMinSdkVersion
         targetSdkVersion xTargetSdkVersion
         consumerProguardFiles 'proguard-library.txt'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
