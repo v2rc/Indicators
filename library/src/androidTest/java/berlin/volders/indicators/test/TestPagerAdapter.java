@@ -14,17 +14,20 @@
  * limitations under the License.
  */
 
-package berlin.volders.indicators;
+package berlin.volders.indicators.test;
 
 import android.database.DataSetObserver;
-import android.support.v4.view.PagerAdapter;
 import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.PagerAdapter;
 
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-class TestPagerAdapter extends PagerAdapter {
+@SuppressWarnings("WeakerAccess")
+public class TestPagerAdapter extends PagerAdapter {
 
     int observers;
 
@@ -34,21 +37,21 @@ class TestPagerAdapter extends PagerAdapter {
     }
 
     @Override
-    public boolean isViewFromObject(View view, Object object) {
+    public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
         return false;
     }
 
     @Override
-    public void registerDataSetObserver(DataSetObserver observer) {
+    public void registerDataSetObserver(@NonNull DataSetObserver observer) {
         observers++;
     }
 
     @Override
-    public void unregisterDataSetObserver(DataSetObserver observer) {
+    public void unregisterDataSetObserver(@NonNull DataSetObserver observer) {
         observers--;
     }
 
-    void assertHasObservers(boolean b) {
+    public void assertHasObservers(boolean b) {
         assertThat(observers, b ? greaterThan(0) : is(0));
     }
 }

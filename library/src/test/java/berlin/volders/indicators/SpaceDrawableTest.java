@@ -21,9 +21,12 @@ import android.graphics.PixelFormat;
 import org.junit.Before;
 import org.junit.Test;
 
+import berlin.volders.indicators.test.TestCanvas;
+
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
+@SuppressWarnings("WeakerAccess")
 public class SpaceDrawableTest {
 
     final int spacing = 101;
@@ -36,14 +39,14 @@ public class SpaceDrawableTest {
     }
 
     @Test
-    public void spacing() throws Exception {
+    public void spacing() {
         assertThat(drawable.spacing, is(spacing));
         assertThat(drawable.getIntrinsicWidth(), is(spacing));
         assertThat(drawable.getIntrinsicHeight(), is(spacing));
     }
 
     @Test
-    public void draw() throws Exception {
+    public void draw() {
         TestCanvas canvas = new TestCanvas();
 
         drawable.draw(canvas);
@@ -52,7 +55,7 @@ public class SpaceDrawableTest {
     }
 
     @Test
-    public void getOpacity() throws Exception {
+    public void getOpacity() {
         assertThat(drawable.getOpacity(), is(PixelFormat.TRANSPARENT));
     }
 }

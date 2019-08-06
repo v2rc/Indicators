@@ -16,30 +16,35 @@
 
 package berlin.volders.indicators;
 
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.ViewPager;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import static android.support.test.InstrumentationRegistry.getContext;
+import berlin.volders.indicators.test.TestPageChangeObserverView;
+import berlin.volders.indicators.test.TestPagerAdapter;
+import berlin.volders.indicators.test.TestViewPager;
+
+import static androidx.test.core.app.ApplicationProvider.getApplicationContext;
 import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
+@SuppressWarnings({"WeakerAccess", "ConstantConditions"})
 public class PageIndicatorsTest {
 
     PageIndicators indicators;
     TestPageChangeObserverView pageObserverView;
 
     @Before
-    public void setup() throws Exception {
-        indicators = new PageIndicators(getContext());
-        pageObserverView = new TestPageChangeObserverView(getContext());
+    public void setup() {
+        indicators = new PageIndicators(getApplicationContext());
+        pageObserverView = new TestPageChangeObserverView(getApplicationContext());
     }
 
     @Test
-    public void onViewAdded() throws Exception {
+    public void onViewAdded() {
         indicators.onViewAdded(pageObserverView);
 
         assertThat(indicators.observers.pageObservers, hasItem(pageObserverView));
@@ -49,7 +54,7 @@ public class PageIndicatorsTest {
     }
 
     @Test
-    public void onViewRemoved() throws Exception {
+    public void onViewRemoved() {
         indicators.registerObserver(pageObserverView);
 
         indicators.onViewRemoved(pageObserverView);
@@ -61,10 +66,10 @@ public class PageIndicatorsTest {
     }
 
     @Test
-    public void setViewPager() throws Exception {
+    public void setViewPager() {
         indicators.registerObserver(pageObserverView);
-        TestViewPager oldViewPager = new TestViewPager(getContext());
-        TestViewPager newViewPager = new TestViewPager(getContext());
+        TestViewPager oldViewPager = new TestViewPager(getApplicationContext());
+        TestViewPager newViewPager = new TestViewPager(getApplicationContext());
 
         indicators.setViewPager(oldViewPager);
         indicators.setViewPager(newViewPager);
@@ -79,8 +84,8 @@ public class PageIndicatorsTest {
     }
 
     @Test
-    public void bindViewPager() throws Exception {
-        TestViewPager viewPager = new TestViewPager(getContext());
+    public void bindViewPager() {
+        TestViewPager viewPager = new TestViewPager(getApplicationContext());
 
         indicators.bindViewPager(viewPager);
 
@@ -89,8 +94,8 @@ public class PageIndicatorsTest {
     }
 
     @Test
-    public void unbindViewPager() throws Exception {
-        TestViewPager viewPager = new TestViewPager(getContext());
+    public void unbindViewPager() {
+        TestViewPager viewPager = new TestViewPager(getApplicationContext());
         indicators.bindViewPager(viewPager);
 
         indicators.unbindViewPager(viewPager);
@@ -100,7 +105,7 @@ public class PageIndicatorsTest {
     }
 
     @Test
-    public void bindPagerAdapter() throws Exception {
+    public void bindPagerAdapter() {
         TestPagerAdapter adapter = new TestPagerAdapter();
 
         indicators.bindPagerAdapter(adapter);
@@ -109,7 +114,7 @@ public class PageIndicatorsTest {
     }
 
     @Test
-    public void unbindPagerAdapter() throws Exception {
+    public void unbindPagerAdapter() {
         TestPagerAdapter adapter = new TestPagerAdapter();
         indicators.bindPagerAdapter(adapter);
 
@@ -119,8 +124,8 @@ public class PageIndicatorsTest {
     }
 
     @Test
-    public void setupPage() throws Exception {
-        TestViewPager viewPager = new TestViewPager(getContext());
+    public void setupPage() {
+        TestViewPager viewPager = new TestViewPager(getApplicationContext());
         indicators.setViewPager(viewPager);
 
         indicators.setupPage(pageObserverView);
@@ -129,8 +134,8 @@ public class PageIndicatorsTest {
     }
 
     @Test
-    public void setupPageCount() throws Exception {
-        TestViewPager viewPager = new TestViewPager(getContext());
+    public void setupPageCount() {
+        TestViewPager viewPager = new TestViewPager(getApplicationContext());
         indicators.setViewPager(viewPager);
 
         indicators.setupPageCount(pageObserverView);
@@ -139,8 +144,8 @@ public class PageIndicatorsTest {
     }
 
     @Test
-    public void registerObserver() throws Exception {
-        TestViewPager viewPager = new TestViewPager(getContext());
+    public void registerObserver() {
+        TestViewPager viewPager = new TestViewPager(getApplicationContext());
         indicators.setViewPager(viewPager);
 
         indicators.registerObserver(pageObserverView);
@@ -154,7 +159,7 @@ public class PageIndicatorsTest {
     }
 
     @Test
-    public void unregisterObserver() throws Exception {
+    public void unregisterObserver() {
         indicators.registerObserver(pageObserverView);
 
         indicators.unregisterObserver(pageObserverView);
@@ -166,9 +171,9 @@ public class PageIndicatorsTest {
     }
 
     @Test
-    public void unregisterAllPageObservers() throws Exception {
+    public void unregisterAllPageObservers() {
         indicators.registerObserver(pageObserverView);
-        indicators.registerObserver(new TestPageChangeObserverView(getContext()));
+        indicators.registerObserver(new TestPageChangeObserverView(getApplicationContext()));
 
         indicators.unregisterAllObservers();
 

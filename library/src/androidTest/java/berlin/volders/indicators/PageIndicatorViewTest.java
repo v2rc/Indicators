@@ -19,32 +19,36 @@ package berlin.volders.indicators;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.support.test.filters.SdkSuppress;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.RequiresApi;
+import androidx.test.filters.SdkSuppress;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import static android.support.test.InstrumentationRegistry.getContext;
+import berlin.volders.indicators.test.TestDrawable;
+
+import static androidx.test.core.app.ApplicationProvider.getApplicationContext;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
 
+@SuppressWarnings("WeakerAccess")
 public class PageIndicatorViewTest {
 
     PageIndicatorView pageIndicatorView;
 
     @Before
     public void setup() {
-        pageIndicatorView = new PageIndicatorView(getContext());
+        pageIndicatorView = new PageIndicatorView(getApplicationContext());
     }
 
     @Test
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.JELLY_BEAN)
-    public void getDividerDrawable_ignore_SpaceDrawable() throws Exception {
+    public void getDividerDrawable_ignore_SpaceDrawable() {
         pageIndicatorView.setDividerDrawable(new SpaceDrawable(5));
 
         assertThat(pageIndicatorView.getDividerDrawable(), nullValue());
@@ -53,7 +57,7 @@ public class PageIndicatorViewTest {
     @Test
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.JELLY_BEAN)
-    public void getDividerDrawable_delegate_non_SpaceDrawable() throws Exception {
+    public void getDividerDrawable_delegate_non_SpaceDrawable() {
         Drawable drawable = new ShapeDrawable();
         pageIndicatorView.setDividerDrawable(drawable);
 
@@ -61,8 +65,8 @@ public class PageIndicatorViewTest {
     }
 
     @Test
-    public void onPageChanged() throws Exception {
-        PageIndicators indicators = new PageIndicators(getContext());
+    public void onPageChanged() {
+        PageIndicators indicators = new PageIndicators(getApplicationContext());
         pageIndicatorView.onPageCountChanged(indicators, 3);
 
         pageIndicatorView.onPageChanged(indicators, 1);
@@ -74,8 +78,8 @@ public class PageIndicatorViewTest {
     }
 
     @Test
-    public void onPageCountChanged() throws Exception {
-        PageIndicators indicators = new PageIndicators(getContext());
+    public void onPageCountChanged() {
+        PageIndicators indicators = new PageIndicators(getApplicationContext());
         pageIndicatorView.onPageChanged(indicators, 1);
 
         pageIndicatorView.onPageCountChanged(indicators, 2);
@@ -86,8 +90,8 @@ public class PageIndicatorViewTest {
     }
 
     @Test
-    public void setIndicatorDrawable_to_null() throws Exception {
-        View view = new View(getContext());
+    public void setIndicatorDrawable_to_null() {
+        View view = new View(getApplicationContext());
         view.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
 
         PageIndicatorView.setIndicatorDrawable(view, null, 1, 2);
@@ -98,8 +102,8 @@ public class PageIndicatorViewTest {
     }
 
     @Test
-    public void setIndicatorDrawable_to_drawable() throws Exception {
-        View view = new View(getContext());
+    public void setIndicatorDrawable_to_drawable() {
+        View view = new View(getApplicationContext());
         view.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
         Drawable drawable = new SpaceDrawable(2);
 
@@ -111,8 +115,8 @@ public class PageIndicatorViewTest {
     }
 
     @Test
-    public void setIndicatorDrawable_to_new_drawable() throws Exception {
-        View view = new View(getContext());
+    public void setIndicatorDrawable_to_new_drawable() {
+        View view = new View(getApplicationContext());
         view.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
         TestDrawable drawable = new TestDrawable(new SpaceDrawable(2));
 

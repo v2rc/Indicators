@@ -14,25 +14,26 @@
  * limitations under the License.
  */
 
-package berlin.volders.indicators;
+package berlin.volders.indicators.test;
 
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
-class TestDrawable extends Drawable {
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
-    final Drawable drawable;
+public class TestDrawable extends Drawable {
 
-    TestDrawable(Drawable drawable) {
+    public final Drawable drawable;
+
+    public TestDrawable(Drawable drawable) {
         this.drawable = drawable;
     }
 
     @Override
-    public void draw(Canvas canvas) {
+    public void draw(@NonNull Canvas canvas) {
     }
 
     @Override

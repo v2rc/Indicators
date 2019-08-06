@@ -1,17 +1,10 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 
-
 android {
-    compileSdkVersion xTargetSdkVersion
-    buildToolsVersion xBuildToolsVersion
-
     defaultConfig {
-        versionCode 2
-        minSdkVersion xMinSdkVersion
-        targetSdkVersion xTargetSdkVersion
+        versionCode 3
         consumerProguardFiles 'proguard-library.txt'
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     dataBinding {
@@ -27,11 +20,6 @@ android {
 configurations {
     exported
     compile.extendsFrom exported
-    all {
-        resolutionStrategy {
-            force "com.android.support:support-v4:$androidSupportVersion"
-        }
-    }
 }
 
 conf2ScopeMappings.addMapping 100, configurations.exported, 'compile'
@@ -42,12 +30,13 @@ configurations.default {
 }
 
 dependencies {
-    exported "com.android.support:support-core-ui:$androidSupportVersion"
-    provided "com.android.support:support-annotations:$androidSupportVersion"
-    testCompile 'junit:junit:4.12'
-    testCompile 'org.hamcrest:hamcrest-library:1.3'
-    androidTestCompile 'com.android.support.test:runner:0.5'
-    androidTestCompile 'org.hamcrest:hamcrest-library:1.3'
+    exported 'androidx.viewpager:viewpager:1.0.0'
+    implementation 'androidx.annotation:annotation:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.hamcrest:hamcrest-library:1.3'
+    androidTestImplementation 'androidx.test:core:1.2.0'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'org.hamcrest:hamcrest-library:1.3'
 }
 
 task sourcesJar(type: Jar) {
@@ -59,8 +48,6 @@ task javadoc(type: Javadoc) {
     failOnError false
     source = android.sourceSets.main.java.sourceFiles
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    classpath += configurations.compile
-    classpath += configurations.provided
     options {
         links "https://d.android.com/reference/"
         linksOffline "https://d.android.com/reference/", "${android.sdkDirectory}/docs/reference/"

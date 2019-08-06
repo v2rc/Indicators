@@ -14,22 +14,24 @@
  * limitations under the License.
  */
 
-package berlin.volders.indicators;
+package berlin.volders.indicators.test;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
+
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.ViewPager;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-class TestViewPager extends ViewPager {
+public class TestViewPager extends ViewPager {
 
     TestPagerAdapter pagerAdapter = new TestPagerAdapter();
 
     boolean adapterChangeListener;
     boolean pageChangeListener;
 
-    TestViewPager(Context context) {
+    public TestViewPager(Context context) {
         super(context);
     }
 
@@ -44,22 +46,22 @@ class TestViewPager extends ViewPager {
     }
 
     @Override
-    public void addOnAdapterChangeListener(OnAdapterChangeListener listener) {
+    public void addOnAdapterChangeListener(@NonNull ViewPager.OnAdapterChangeListener listener) {
         adapterChangeListener = true;
     }
 
     @Override
-    public void removeOnAdapterChangeListener(OnAdapterChangeListener listener) {
+    public void removeOnAdapterChangeListener(@NonNull OnAdapterChangeListener listener) {
         adapterChangeListener = false;
     }
 
     @Override
-    public void addOnPageChangeListener(OnPageChangeListener listener) {
+    public void addOnPageChangeListener(@NonNull OnPageChangeListener listener) {
         pageChangeListener = true;
     }
 
     @Override
-    public void removeOnPageChangeListener(OnPageChangeListener listener) {
+    public void removeOnPageChangeListener(@NonNull OnPageChangeListener listener) {
         pageChangeListener = false;
     }
 

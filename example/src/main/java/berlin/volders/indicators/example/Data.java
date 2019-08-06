@@ -16,7 +16,7 @@
 
 package berlin.volders.indicators.example;
 
-import android.databinding.ObservableInt;
+import androidx.databinding.ObservableInt;
 
 public class Data {
 

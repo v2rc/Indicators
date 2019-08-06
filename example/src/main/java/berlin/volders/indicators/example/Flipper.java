@@ -23,10 +23,11 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import berlin.volders.indicators.PageIndicators;
 
@@ -92,7 +93,7 @@ public class Flipper extends View implements PageIndicators.PageCountObserver, P
     protected void onDraw(Canvas canvas) {
         if (pageCount != 0) {
             float diameter = 2 * cornerRadius;
-            int height = canvas.getHeight();
+            int height = getHeight();
             double rotation = Math.sin(Math.PI * ((1 - 2 * rotationMod) * pageOffset + rotationMod));
             double diagonal = Math.min(diameter + spacing, (height - diameter) / rotation);
             rect.left = (pageCount - page - 1) * (diameter + spacing);

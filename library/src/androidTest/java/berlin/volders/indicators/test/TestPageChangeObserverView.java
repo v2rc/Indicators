@@ -14,24 +14,27 @@
  * limitations under the License.
  */
 
-package berlin.volders.indicators;
+package berlin.volders.indicators.test;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v4.util.Pair;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.core.util.Pair;
+
 import java.util.HashSet;
+
+import berlin.volders.indicators.PageIndicators;
 
 import static org.hamcrest.Matchers.hasItem;
 import static org.junit.Assert.assertThat;
 
-class TestPageChangeObserverView extends View implements PageIndicators.PageObserver,
+public class TestPageChangeObserverView extends View implements PageIndicators.PageObserver,
         PageIndicators.PageCountObserver, PageIndicators.PageStateObserver, PageIndicators.PageScrollObserver {
 
     final HashSet<Pair<PageIndicators, Number>> changes = new HashSet<>();
 
-    TestPageChangeObserverView(Context context) {
+    public TestPageChangeObserverView(Context context) {
         super(context);
     }
 
@@ -39,22 +42,22 @@ class TestPageChangeObserverView extends View implements PageIndicators.PageObse
         changes.add(Pair.create(indicators, value));
     }
 
-    void assertChange(PageIndicators indicators, Number value) {
+    public void assertChange(PageIndicators indicators, Number value) {
         assertThat(changes, hasItem(Pair.create(indicators, value)));
     }
 
     @Override
-    public void onPageChanged(PageIndicators indicators, int page) {
+    public void onPageChanged(@NonNull PageIndicators indicators, int page) {
         onChanged(indicators, page);
     }
 
     @Override
-    public void onPageCountChanged(PageIndicators indicators, int count) {
+    public void onPageCountChanged(@NonNull PageIndicators indicators, int count) {
         onChanged(indicators, count);
     }
 
     @Override
-    public void onPageStateChanged(PageIndicators indicators, int state) {
+    public void onPageStateChanged(@NonNull PageIndicators indicators, int state) {
         onChanged(indicators, state);
     }
 

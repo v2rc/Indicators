@@ -16,20 +16,22 @@
 
 package berlin.volders.indicators.example;
 
-import android.support.test.espresso.NoMatchingViewException;
-import android.support.test.espresso.ViewAction;
-import android.support.test.espresso.ViewAssertion;
-import android.support.test.espresso.ViewInteraction;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 
-import static android.support.test.espresso.action.ViewActions.swipeLeft;
+import androidx.test.espresso.NoMatchingViewException;
+import androidx.test.espresso.ViewAction;
+import androidx.test.espresso.ViewAssertion;
+import androidx.test.espresso.ViewInteraction;
+import androidx.viewpager.widget.ViewPager;
+
+import static androidx.test.espresso.action.ViewActions.swipeLeft;
 
 class PageCount implements ViewAssertion {
 
     private int lastPageCount;
 
     @Override
+    @SuppressWarnings("ConstantConditions")
     public void check(View view, NoMatchingViewException noViewFoundException) {
         if (view instanceof ViewPager) {
             lastPageCount = ((ViewPager) view).getAdapter().getCount();

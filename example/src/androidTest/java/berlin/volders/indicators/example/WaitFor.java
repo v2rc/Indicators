@@ -16,9 +16,10 @@
 
 package berlin.volders.indicators.example;
 
-import android.support.test.espresso.UiController;
-import android.support.test.espresso.ViewAction;
 import android.view.View;
+
+import androidx.test.espresso.UiController;
+import androidx.test.espresso.ViewAction;
 
 import org.hamcrest.Matcher;
 
@@ -44,5 +45,4 @@ class WaitFor implements ViewAction {
     public void perform(UiController uiController, View view) {
         uiController.loopMainThreadForAtLeast(millis);
     }
-
 }

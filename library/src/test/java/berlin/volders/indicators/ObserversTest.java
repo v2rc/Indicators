@@ -16,15 +16,18 @@
 
 package berlin.volders.indicators;
 
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.ViewPager;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import berlin.volders.indicators.test.TestObserver;
 
 import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.hasItem;
 import static org.junit.Assert.assertThat;
 
+@SuppressWarnings("WeakerAccess")
 public class ObserversTest {
 
     Observers observers;
@@ -37,7 +40,7 @@ public class ObserversTest {
     }
 
     @Test
-    public void registerObserver() throws Exception {
+    public void registerObserver() {
         observers.registerObserver(observer);
 
         assertThat(observers.pageObservers, hasItem(observer));
@@ -47,7 +50,7 @@ public class ObserversTest {
     }
 
     @Test
-    public void unregisterObserver() throws Exception {
+    public void unregisterObserver() {
         observers.registerObserver(observer);
 
         observers.unregisterObserver(observer);
@@ -59,7 +62,7 @@ public class ObserversTest {
     }
 
     @Test
-    public void unregisterAllObservers() throws Exception {
+    public void unregisterAllObservers() {
         observers.registerObserver(observer);
         observers.registerObserver(new TestObserver());
 
@@ -72,7 +75,7 @@ public class ObserversTest {
     }
 
     @Test
-    public void onPageChanged() throws Exception {
+    public void onPageChanged() {
         TestObserver observer = new TestObserver();
         observers.registerObserver(observer.pageObserver());
         observers.registerObserver(this.observer);
@@ -88,7 +91,7 @@ public class ObserversTest {
     }
 
     @Test
-    public void onPageCountChanged() throws Exception {
+    public void onPageCountChanged() {
         TestObserver observer = new TestObserver();
         observers.registerObserver(observer.pageCountObserver());
         observers.registerObserver(this.observer);
@@ -104,7 +107,7 @@ public class ObserversTest {
     }
 
     @Test
-    public void onPageStateChanged() throws Exception {
+    public void onPageStateChanged() {
         TestObserver observer = new TestObserver();
         observers.registerObserver(observer.pageStateObserver());
         observers.registerObserver(this.observer);
@@ -123,7 +126,7 @@ public class ObserversTest {
     }
 
     @Test
-    public void onPageScrollChanged() throws Exception {
+    public void onPageScrollChanged() {
         TestObserver observer = new TestObserver();
         observers.registerObserver(observer.pageScrollObserver());
         observers.registerObserver(this.observer);

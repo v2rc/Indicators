@@ -16,8 +16,9 @@
 
 package berlin.volders.indicators.example;
 
-import android.databinding.BindingAdapter;
 import android.view.View;
+
+import androidx.databinding.BindingAdapter;
 
 public class Binding {
 
@@ -28,8 +29,8 @@ public class Binding {
             return;
         }
         page++;
-        for (int i = 0; i < pages.length; i++) {
-            if (pages[i] == page) {
+        for (int paged : pages) {
+            if (paged == page) {
                 view.setVisibility(View.VISIBLE);
                 return;
             }

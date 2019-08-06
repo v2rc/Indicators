@@ -10,24 +10,24 @@
 
         <variable
             name="adapter"
-            type="android.support.v4.view.PagerAdapter" />
+            type="androidx.viewpager.widget.PagerAdapter" />
 
         <variable
             name="data"
             type="berlin.volders.indicators.example.Data" />
     </data>
 
-    <android.support.design.widget.CoordinatorLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="berlin.volders.indicators-example.MainActivity">
 
-        <android.support.design.widget.AppBarLayout
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/AppTheme.AppBarOverlay">
 
-            <android.support.v7.widget.Toolbar
+            <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
@@ -39,9 +39,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_gravity="bottom" />
-        </android.support.design.widget.AppBarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
 
-        <android.support.v4.view.ViewPager
+        <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -60,7 +60,7 @@
                     app:page="@{data.page}"
                     app:pages="@{@intArray/flippingPages}" />
             </berlin.volders.indicators.PageIndicators>
-        </android.support.v4.view.ViewPager>
+        </androidx.viewpager.widget.ViewPager>
 
         <berlin.volders.indicators.PageIndicatorView
             android:layout_width="match_parent"
@@ -104,5 +104,5 @@
                 app:page="@{data.page}"
                 app:pages="@{@intArray/numberPages}" />
         </berlin.volders.indicators.PageIndicators>
-    </android.support.design.widget.CoordinatorLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

@@ -19,22 +19,23 @@ package berlin.volders.indicators;
 import org.junit.Before;
 import org.junit.Test;
 
-import static android.support.test.InstrumentationRegistry.getContext;
+import static androidx.test.core.app.ApplicationProvider.getApplicationContext;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
+@SuppressWarnings("WeakerAccess")
 public class PageNumberViewTest {
 
     PageNumberView pageNumberView;
 
     @Before
     public void setup() {
-        pageNumberView = new PageNumberView(getContext());
+        pageNumberView = new PageNumberView(getApplicationContext());
     }
 
     @Test
-    public void onPageChanged() throws Exception {
-        PageIndicators indicators = new PageIndicators(getContext());
+    public void onPageChanged() {
+        PageIndicators indicators = new PageIndicators(getApplicationContext());
         pageNumberView.setTemplate("%d-%d");
         pageNumberView.onPageCountChanged(indicators, 3);
 
@@ -45,8 +46,8 @@ public class PageNumberViewTest {
     }
 
     @Test
-    public void onPageCountChanged() throws Exception {
-        PageIndicators indicators = new PageIndicators(getContext());
+    public void onPageCountChanged() {
+        PageIndicators indicators = new PageIndicators(getApplicationContext());
         pageNumberView.setTemplate("%d-%d");
         pageNumberView.onPageChanged(indicators, 1);
 

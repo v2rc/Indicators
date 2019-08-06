@@ -18,8 +18,9 @@ package berlin.volders.indicators.example;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
 import android.text.Html;
+
+import androidx.core.content.ContextCompat;
 
 class Images implements Html.ImageGetter {
 
@@ -32,13 +33,16 @@ class Images implements Html.ImageGetter {
     @Override
     public Drawable getDrawable(String source) {
         if (source.equals("github.png")) {
-            return intrinsic(ContextCompat.getDrawable(context, R.drawable.github));
+            return getDrawable(context);
         }
         return null;
     }
 
-    private static Drawable intrinsic(Drawable drawable) {
-        drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+    private static Drawable getDrawable(Context context) {
+        Drawable drawable = ContextCompat.getDrawable(context, R.drawable.github);
+        if (drawable != null) {
+            drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+        }
         return drawable;
     }
 }
