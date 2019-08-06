@@ -20,6 +20,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
 
 import berlin.volders.indicators.test.TestPageChangeObserverView;
 import berlin.volders.indicators.test.TestPagerAdapter;
@@ -32,6 +34,7 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 @SuppressWarnings({"WeakerAccess", "ConstantConditions"})
+@RunWith(RobolectricTestRunner.class)
 public class PageIndicatorsTest {
 
     PageIndicators indicators;

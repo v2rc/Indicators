@@ -18,12 +18,15 @@ package berlin.volders.indicators;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
 
 import static androidx.test.core.app.ApplicationProvider.getApplicationContext;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 @SuppressWarnings("WeakerAccess")
+@RunWith(RobolectricTestRunner.class)
 public class PageNumberViewTest {
 
     PageNumberView pageNumberView;

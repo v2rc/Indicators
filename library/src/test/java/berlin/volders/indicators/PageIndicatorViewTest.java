@@ -18,15 +18,13 @@ package berlin.volders.indicators;
 
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
-import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.RequiresApi;
-import androidx.test.filters.SdkSuppress;
-
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
 
 import berlin.volders.indicators.test.TestDrawable;
 
@@ -36,6 +34,7 @@ import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 @SuppressWarnings("WeakerAccess")
+@RunWith(RobolectricTestRunner.class)
 public class PageIndicatorViewTest {
 
     PageIndicatorView pageIndicatorView;
@@ -46,8 +45,6 @@ public class PageIndicatorViewTest {
     }
 
     @Test
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.JELLY_BEAN)
     public void getDividerDrawable_ignore_SpaceDrawable() {
         pageIndicatorView.setDividerDrawable(new SpaceDrawable(5));
 
@@ -55,8 +52,6 @@ public class PageIndicatorViewTest {
     }
 
     @Test
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.JELLY_BEAN)
     public void getDividerDrawable_delegate_non_SpaceDrawable() {
         Drawable drawable = new ShapeDrawable();
         pageIndicatorView.setDividerDrawable(drawable);
